@@ -1,9 +1,6 @@
-# if __name__ == "__main__": (this script can be imported OR run standalone)
-#                            Functions and classes in this module can be reused
-#                            without the main block of code executing
-
-# ex. library = Import library for functionality
-#               When running library directly, display a help page
+# It allows a script to be both reusable as a module (importable by other scripts) and executable (run directly for testing or standalone use).
+# It helps separate the library code (functions, classes) from the script code (execution logic).
+# It prevents certain code (like tests or demo code) from running when the file is imported.
 
 def some_function():
     print("This is a function.")

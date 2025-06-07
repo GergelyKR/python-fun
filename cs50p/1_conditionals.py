@@ -15,6 +15,8 @@ def main():
     else:
         print("F")
 
+    # Check parity
+
     num = int(input("Enter a number: "))
 
     if is_even(num):
@@ -22,12 +24,33 @@ def main():
     else:
         print(f"{num} is Odd")
 
-    # Check parity
+    # Check house
 
-def is_even(num):
-    if num % 2 == 0:
-        return True
-    else:
-        return False
+    name = input("Enter your name: ")
+
+    # if name == "Harry" or name == "Hermione" or name == "Ron":
+    #     print("Gryffindor")
+    # elif name == "Draco":
+    #     print("Slytherin")
+    # else:
+    #     print("Who are you?")
+
+    match name:
+        case "Harry" | "Hermione" | "Ron":
+            print("Gryffindor")
+        case "Draco":
+            print("Slytherin")
+        case _:
+            print("Who are you?")
+
+def is_even(n):
+    # return True if n % 2 == 0 else False
+
+    return (n % 2 == 0)
+
+    # if n % 2 == 0:
+    #     return True
+    # else:
+    #     return False
 
 main()

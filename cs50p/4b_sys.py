@@ -8,5 +8,5 @@ if len(sys.argv) < 2:
 
 # print(f"Hello, {sys.argv[1]}")
 
-for arg in sys.argv[1:]:
+for arg in sys.argv[1:]: # Slice of a list, starts at index 1
     print("Hello, my name is", arg)

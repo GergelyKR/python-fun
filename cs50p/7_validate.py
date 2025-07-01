@@ -9,7 +9,7 @@ import re
 
 email = input("What's your email? ").strip() # .strip() removes spaces from the beginning and the end of the string
 
-if re.search(r"^.+@.+\.edu$", email):
+if re.search(r"^[a-z0-9_\.]+@(\w+\.)?\w+\,edu$", email, re.IGNORECASE):
     print("Valid")
 else:
     print("Invalid")

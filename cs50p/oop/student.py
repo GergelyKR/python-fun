@@ -8,15 +8,20 @@ class Student:
     # ... -> works as a placeholder
     def __init__(self, name, house): # The function that is called to construct the object
         # self -> refers to the current object that was just created
+        if not name:
+            raise ValueError("Missing name")
+        if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+            raise ValueError("Invalid house")
         self.name = name # create new attribute / instance variable for the new empty object
         self.house = house
 
+    def __str__(self): # accesses the defined object's attributes and returns a string representation of the object
+        return f"{self.name} from {self.house}"
 
 def main():
     student = get_student()
+    print(student)
     # print(f"{student['name']} from {student['house']}")
-    print(f"{student.name} from {student.house}")
-
 
 # def get_student():
 #     name = input("Name: ")
@@ -40,10 +45,10 @@ def get_student():
     # student.house = input("House: ") -> also called instance variables
     name = input("Name: ")
     house = input("House: ")
-    student = Student(name, house) # you can use the class as a function
-                                   # constructor call to construct (instantiate) a student object
-                                   # uses the student class as a template, it will always have a name and a house
-    return student
+    return Student(name, house)
+    # you can use the class as a function
+    # a constructor call to construct (instantiate) a student object
+    # uses the student class as a template, it will always have a name and a house
 
 
 if __name__ == "__main__":

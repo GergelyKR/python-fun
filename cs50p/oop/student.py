@@ -1,7 +1,7 @@
-# tuple: Immutable list
 # class: Allows inventing custom data types, a blueprint for creating objects
 #        Custom containers with custom names for pieces of data
 #        You can also define methods for the class
+# attribute: A variable inside a class
 # object: Instance of a class
 # method: Function inside a class
 # property: Attribute of an object with more functionality

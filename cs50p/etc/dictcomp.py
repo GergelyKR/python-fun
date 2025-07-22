@@ -15,3 +15,12 @@ students = ["Hermione", "Harry", "Ron"]
 gryffindors = {student: "Gryffindor" for student in students}
 
 print(gryffindors)
+
+print()
+
+# enumeration (to replace below code)
+# for i in range(len(students)):
+#     print(i + 1, students[i])
+
+for i, student in enumerate(students):
+    print(i + 1, student)

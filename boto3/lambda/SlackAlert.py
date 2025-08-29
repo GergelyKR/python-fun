@@ -6,6 +6,7 @@ import json
 
 slack_web_hook = input("Enter your Slack Webhook URL: ")
 # slack_web_hook = os.environ['SLACK_WEB_HOOK'] -> If we use environment variable
+# environment variables can also be encrypted with KMS and decrypted inside the function
 
 def send_slack(event, context):
     print(str(event))

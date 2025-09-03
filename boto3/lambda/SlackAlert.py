@@ -1,11 +1,10 @@
 import requests
 import json
-# import os
+import os
 
 # External dependencies (libraries) need to be included in the package file uploaded to Lambda
 
-slack_web_hook = input("Enter your Slack Webhook URL: ")
-# slack_web_hook = os.environ['SLACK_WEB_HOOK'] -> If we use environment variable
+slack_web_hook = os.environ['SLACK_WEB_HOOK']
 # environment variables can also be encrypted with KMS and decrypted inside the function
 
 def send_slack(event, context):

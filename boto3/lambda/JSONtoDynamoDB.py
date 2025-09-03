@@ -13,7 +13,7 @@
 import boto3
 import json
 s3_client = boto3.client('s3')
-dynamodb_client = boto3.client('dynamodb')
+dynamodb = boto3.client('dynamodb')
 
 def lambda_handler(event, context):
     bucket = event['Records'][0]['s3']['bucket']['name']

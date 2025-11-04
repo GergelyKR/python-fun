@@ -1,0 +1,19 @@
+Data within containers
+
+All data created and modified within containers are ephemeral
+Dependencies or other needed data should be built into the image
+For persistent data, an external volume has to be used
+
+Container filesystem
+
+ - RO -
+0. Base Image (ubuntu)
+1. Build Layer (apt update, apt install)
+2. Build Layer (Copy ..)
+3. Build Layer (run npm install)
+ - RW -
+4. Container layer
+
+Persistent data:
+ - Volume mount (inside docker desktop VM) -> /var/lib/docker/volumes  -- > Recommended, no boundary cross, better r/w performance
+ - Bind mount (host filesystem) -> /path/to/my/data

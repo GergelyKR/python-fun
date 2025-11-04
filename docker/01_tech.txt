@@ -1,0 +1,14 @@
+Container core techs:
+
+- Namespaces
+A global resource within a namespace appears to be an isolated instance of the global resource
+
+- Cgroups
+Processes organized in hierarchical groups whose usage of system resources can be limited and monitored
+Examples -> limit cpu cycles, memory usage, disk read throttling
+
+- Union Mount Filesystem (Docker OverlayFS):
+Shows files and directories of separate file systems (branches)
+as a single coherent filesystem, identical paths are merged.
+Images consist of lower and upper layers.
+Lower layers can be shared and cached to save space on container images

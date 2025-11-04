@@ -17,3 +17,17 @@ Container filesystem
 Persistent data:
  - Volume mount (inside docker desktop VM) -> /var/lib/docker/volumes  -- > Recommended, no boundary cross, better r/w performance
  - Bind mount (host filesystem) -> /path/to/my/data
+
+Add new tools to image:
+docker build --tag my-ubuntu-image -<<EOF
+FROM ubuntu:22.04
+RUN apt update && apt install iputils-ping --yes
+EOF
+
+Using volumes (stored on docker VM):
+docker volume create my-volume
+docker run  -it --rm -v my-volume:/my-data ubuntu:22.04
+docker run  -it --rm --mount source=my-volume,destination=/my-data/ ubuntu:22.04
+
+Using host disk:
+docker run  -it --rm -v ${PWD}/my-data:/my-data ubuntu:22.04

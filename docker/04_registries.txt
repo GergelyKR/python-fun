@@ -1,0 +1,24 @@
+There are many (DockerHub, GitHub, AWS, GCP, Azure), they have different authentication
+Public -> Can download without auth
+Private -> Needs auth for both push & pull
+
+To push a built repo:
+Authenticate to the repo
+    docker login
+Tag the image corresponding to the repo (dockerhub is default)
+    docker tag imagename username/imagename:anc-123
+    docker push username/imagename:abc-123
+
+    docker tag imagename ghcr.io/username/imagename:anc-123
+    docker push ghcr.io/username/imagename:abc-123
+
+- - - Tags - - -
+
+Images can have multiple tags pointing to the same image
+Apart from temporary development tags, they should be treated as immutable
+Automated builds should use combinations of
+    - timestamp
+    - build ID from ci
+    - Commit hash used to build image
+    - SemVer release version
+    - If not DockerHub, registry host should prefix the image name

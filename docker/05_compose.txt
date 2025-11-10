@@ -1,0 +1,44 @@
+Easier to work with if we run multiple services that communicate with each other
+
+Common parameters:
+-d (detached, returns you to shell after running)
+--entrypoint (override entry point of dockerfile)
+--env, -e, --env-file (set env variables at runtime)
+--init (instead of PID 1, your process will be ran as subprocess and can handle its own subprocesses)
+--interactive, -l, --tty, -t (TTY session inside container)
+--mount, --volume, -v (to persist data outside container)
+--name (if not specified, docker will use random name)
+--network, --net (connect to specific docker network)
+--platform (specify different architecture)
+--publish, -p (connect host port to container port)
+--restart (always / unless-stopped / never)
+--rm (if the container process exists, remove container)
+
+More advanced:
+--cap-add, --cap-drop (specify needed linux capabilities)
+--cgroup-parent (associate cgroup ID)
+--cpu-shares (specify CPU cycles percentage to access)
+--cpuset-cpus (pin execution to specific CPU cores)
+--device-cgroup-rule
+--device-read-bps, --device-read-iops, --device-write-bps, --device-write-iops
+--gpus (NVIDIA Only)
+--health-cmd, --health-interval, --health-retries, --health-start-period, --health-timeout
+--memory, -m (specify max memory limit)
+--pid, --pids-limit (managed subprocesses limit)
+--privileged (gives full access for container process)
+--read-only (makes even the container FS read-only)
+--security-opt (specify app armor or comp profiles)
+--userns (enable namespace remapping, example non-root user from host to root user inside container)
+
+
+Composing is useful to make multiple longer run commands into a single .yml file
+Tools can be also leveraged for this (www.composerise.com)
+It can also build the required images with context and dockerfile
+It can specify dependency between containers
+Can build up and run an application from scratch in a few minutes
+
+Commands:
+ - docker compose build (build all containers)
+ - docker compose up (run them)
+ - docker compose up --build
+ - docker compose down

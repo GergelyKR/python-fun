@@ -1,0 +1,14 @@
+Docker Swarm -> better for deployment due to compose's limitations
+ - Downtimes, inconvenient rollback
+ - No way to handle credentials (encrypted secrets)
+ - Can only be used on a single host (we want HA)
+
+Docker swarm does provide those things and setting up a single node cluster can be done with one command docker swarm init. Making just a few modifications to the docker compose file (adding deploy configurations, passing sensitive info as secrets and reading those data as files within the applications) it is ready to deploy.
+
+Create a virtual machine with your favorite cloud provider. Make sure to set up the firewall to listen on ports 80, 443, and 22.
+Use the script at https://get.docker.com/ to install docker engine. If managing docker as a non-root user, you may need to follow these steps: https://docs.docker.com/engine/install/linux-postinstall/ after installing.
+Set the DOCKER_HOST environment variable in the Makefile to USERNAME@IP_ADDRESS of your virtual machine (this will allow your local docker client to use the remote docker daemon!)
+Build and push the container images to a registry
+Populate the secrets by running make create-secrets
+Deploy the application by running make swarm-deploy-stack (uses the docker stack deploy command under the hood)
+Set up a DNS A record to route traffic to your VM (or access using the IP address)

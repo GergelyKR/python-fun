@@ -1,0 +1,34 @@
+Cluster (contains all nodes)
+    - Control plane -> Runs the system components
+        c-c-m - cloud controller manager, interace between k8s and cloud provider
+        c-m - controller manager, runs all the controllers regulating the cluster
+        api - routes api requests to various components
+        etcd - highly available key-value store containing info about all deployed resources, ensuring data consistency
+        sched - scheduler, assigning pods to new nodes based on resource need and capacity
+    - Data plane -> Runs end-user applications
+        workloads
+        kubelet - spawns and manages workloads, performs HC and relays info back to API server
+        k-proxy - maintains networking between different workloads (iptables rules)
+
+Managed clusters hide most of the complexity, just grant access to the API itself for deploying workloads
+
+- -
+
+Standard interfaces
+
+CRI (container runtime interface)
+ - containerd (docker is not supported anymore)
+ - cryo
+
+CNI (container network interface) Note: Not all of them use kube-proxy
+ - Calico
+ - Flannel
+ - Cilium
+ - Cloud specific (Amazon VPC CNI, Azure CNI, Google Cloud CNI)
+
+CSI (container storage interface)
+ - Cloud specific (Amazon EBS CSI Driver, Compute Engine persistent disk CSI driver, Azure Disk Container CSI driver)
+ - Cert manager CSI driver
+ - Secrets Store CSI driver
+
+Further capabilities -> https://landscape.cncf.io

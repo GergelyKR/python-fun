@@ -1,0 +1,28 @@
+Help command: kubectl explain namespaces
+
+Namespaces -> Group resources within a cluster
+    Initial namespaces:
+        - default
+        - kube-system
+        - kube-node-lease
+        - kube-public
+    By default, they do not provide network/security boundary
+    Useful to put an app or a group of interacting apps in their own namespaces
+    Best practice to use them for group things logically
+
+Pods -> Smallest deployable unit where the containers run
+    - Can contain multiple containers
+    - Networking and storage is shared within a Pods
+    - Init container: Runs before startup of the other containers
+    - Sidecar container: Runs alongside containers (example: network proxy)
+    - Other configs:
+        - Ports
+        - Health probes
+        - Resource requests/limits
+        - Security context
+        - Env. variables
+        - Volumes
+        - DNS policies
+
+ReplicaSet -> Takes a pod definition and wraps it in another layer
+    - Labels are the link between ReplicaSets and Pods

@@ -26,3 +26,28 @@ Pods -> Smallest deployable unit where the containers run
 
 ReplicaSet -> Takes a pod definition and wraps it in another layer
     - Labels are the link between ReplicaSets and Pods
+
+Deployment -> Adds the concept of "rollouts" and "rollbacks"
+    - Used for long-running stateless applications
+    - Specify pod specs, how many replicas needed, smoothly move between versions, configs
+    - Reapplying a modified yaml template will smoothly replace one pod at a time
+
+Service -> Internal load balancer across replicas
+    - Uses pod labels to determine which pods to serve
+    - Types:
+        - ClusterIP: Internal to cluster
+        - NodePort: Listens on each node in cluster
+        - LoadBalancer: Provisions external load balancer
+
+Job -> Adds the concept of tracking "completions"
+    - Only runs at creation
+    - Used for execution of workloads that run to completion
+    - It will retry failed attempts (restartPolicy, backoffLimit)
+    - More params:
+        - parallelism
+        - completions
+        - activeDeadlineSeconds
+
+CronJob -> Adds the concept of a "schedule"
+    - Used for periodic execution of workloads that run to completion
+    - Uses cronjob format to spawn jobs but also can be triggered manually (k create job --from)

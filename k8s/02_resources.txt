@@ -100,3 +100,28 @@ PersistentVolume & PersistentVolumeClaim -> API for creating, managing and consu
         - ReadWrite Many: Multiple pods mounted in RW mode (underlying implementation has to support multiple rights consistently)
     - Reclaim policy: Retain vs Delete (retain will not delete the cloud resource)
     - Can be provisioned directly or via StatefulSet
+
+- - - -
+
+RBAC (ServiceAccount, Role, RoleBinding) -> Provides apps or users access to the K8s API
+    - Access can be granted by namespace (Role) OR cluster wide (ClusterRole)
+    - Used for workloads to access the K8s API and resources within K8s API
+
+- - - -
+
+Labels -> Key-value pairs used to identify and organize K8s resources
+    - Can be used to filter api-server queries (e.g. with kubectl)
+
+Annotations -> Key-value pairs used for non-identifying metadata
+    - Used for things like configuration details, deployment history
+    - Often used by tools to configure specific behaviors (e.g. ingress annotations)
+
+- - - -
+
+Others:
+    - LimitRange -> Govern the number of resources a particular object kind can request
+    - NetworkPolicy -> Controls network access between network boundaries
+    - MutatingWebhookConfiguration -> Change deploy resource requests on the fly (e.g. inject sidecar containers)
+    - ValidatingWebhookConfiguration -> Enforce specific standards about characteristics of the resources being deployed (e.g. force deployments to specify memory limit)
+    - HorizontalPodAutoscaler -> Automatically scale number of replicas within a deployment / set based on specified metrics
+    - CustomResourceDefinition -> Extends the K8s API and define new kind of resources specific to the application

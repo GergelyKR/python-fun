@@ -1,0 +1,12 @@
+Dockerfile -> Contains the commands a user could call on the CLI to assemble an image
+
+Usual recipe:
+ - Select OS
+ - Install language runtime
+ - Install app dependencies
+ - Set up execution Environment
+ - Run application
+
+Registry -> Store and access built images
+ - The cluster or CI server can then pull these images directly
+ - During build the target server architecture can be emulated (docker buildx)

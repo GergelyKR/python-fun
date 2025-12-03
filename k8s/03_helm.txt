@@ -1,0 +1,42 @@
+Helm -> Standard for distributing software for K8s
+    - Package manager
+    - Templating Engine
+    - Used for:
+        - App deployment
+        - Environment management
+    - Commands:
+        - helm install / helm upgrade
+        - helm rollback
+
+- - - -
+
+Overview:
+
+Helm (or OCI) Repository
+    |
+    |-Helm chart
+        |   - Chart metadata -> Chart.yaml, values.yaml (interface to configure and customize templates)
+        |   - Templates -> deployment.yaml, service.yaml, configmap.yaml
+        |
+        |- K8s cluster
+            - release (rendered version of the templates being deployed)
+                - deployment
+                - service
+                - configmap
+
+- - - -
+
+Important features
+    - Metadata (can reference Chart / Release / Values object)
+    - Variables
+    - Conditionals
+    - Loops (range)
+
+Official charts can be pulled from repositories and checked, default values can be adjusted
+Its possible to check the templates without pulling (helm show values bitnami/postgresql --version=xxx)
+
+Chart types:
+    - application (for app deployment)
+    - library (define resources to be consumed by other charts)
+
+Helm hooks -> Specify resources to deploy / clean up before or after installations / upgrades

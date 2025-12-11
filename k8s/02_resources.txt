@@ -125,3 +125,12 @@ Others:
     - ValidatingWebhookConfiguration -> Enforce specific standards about characteristics of the resources being deployed (e.g. force deployments to specify memory limit)
     - HorizontalPodAutoscaler -> Automatically scale number of replicas within a deployment / set based on specified metrics
     - CustomResourceDefinition -> Extends the K8s API and define new kind of resources specific to the application
+
+What to use in a demo deployment?
+
+ - Deployments for stateless components
+ - StatefulSet for DB (via helm chart)
+ - Services for stable network endpoints
+ - Ingress for traffic routing
+ - ConfigMaps and Secrets for configuration
+ - Job for DB migration

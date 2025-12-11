@@ -1,0 +1,54 @@
+K8s is not just a container orchestrator
+    - Provides API for declaring, observing and acting on a set of resources
+    - Custom Resource Definitions allow apps to extend the default resource set
+    - Custom controllers observe and act upon CustomResourceDefinition
+    - Use Cases:
+        - Embed custom logic into "Operators" (CloudNative PG)
+        - Manage TLS certificates (Cert-Manager)
+        - Deploy infrastructure with automatic reconciliation (Crossplane)
+        - Anything needed
+
+Tooling
+    - kubebuilder to build controllers 
+    - Operator SDK
+    - Metacontroller
+    - Build your own with any k8s client
+
+- - -
+
+- CloudNative PG -> PostGreSQL resources to be used in cloud k8s
+- Trivy -> Container auditing & vulnerability scanning
+- Cert Manager -> Provision and management of TLS certs
+- External Secrets Operator -> Store source of truth for secrets outside the cluster
+- SaaS Monitoring & Observability (Datadog, Grafana Cloud, etc...)
+- Self-hosted Monitoring & Observability (Prometheus, Grafana, Loki, etc...)
+- GitOps tools -> Automatically keep cluster state synced with configurations in Git
+- Service Meshes
+- Open Policy Agent -> Compliance, rules
+- Crossplane -> IaaS tool
+- Knative -> Serverless platform
+- Kubevirt -> Deploy and manage VMs
+- Velero -> Backup & Restore tool
+
+- - -
+
+Tools to help rebuild/reload services when changes are made:
+
+- Tilt (https://tilt.dev/)
+- Skaffold (https://skaffold.dev/)
+- Telepresence (https://www.telepresence.io/)
+- mirrord (https://mirrord.dev/)
+
+Tilt allows for configurating your application such that each service will automatically rebuild/reload within the cluster when changes are made.
+
+- - -
+
+Tools for secrets management:
+
+Often one of the most painful parts of any application deployment. The rest of the configuration lives within version control (e.g. Git), but we cannot safely store these credentials there.
+Methods to approach this problem:
+
+1. Manually create/update secrets out of band -> The first approach people take is to manually create any secrets. This requires no setup, but quickly becomes unmanageable and will eventually lead to pain.
+2. External Secrets Operator (https://external-secrets.io/latest/) -> ESO provides a way to mirror secrets for an external provider (such as Google Cloud Secret Manager OR 1Pass) as Kubernetes secrets. This allows you to keep the sensitive information in a tool built for such a purpose and reference these with non-sensitive configurations which can live alongside your other configuration. This is the approach which is shown here!
+3. Sealed Secrets (https://sealed-secrets.netlify.app/) and `SOPs` (https://github.com/getsops/sops) -> These projects enable you to encrypt secrets such that you can safely store the encrypted version in version control and decrypt them within the cluster for use by your applications.
+4. Skip k8s secrets entirely -> Some people prefer to avoid Kubernetes secrets whereever possible and load them directly from an external system such as Vault, AWS Secrets Manager, or Doppler.

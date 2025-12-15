@@ -32,6 +32,7 @@ Tooling
 
 - - -
 
+GUI for checking k8s resources -> k9s
 Tools to help rebuild/reload services when changes are made:
 
 - Tilt (https://tilt.dev/)

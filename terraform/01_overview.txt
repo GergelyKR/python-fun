@@ -1,0 +1,29 @@
+Terraform
+ - Tool for building, changing, versioning infrastructure (IaC)
+ - Enables application software best practices to infrastructure
+ - Compatible with many clouds and services
+
+Categories of IaC tools:
+ - Ad hoc scripts
+ - Config management tools (Ansible, Puppet, Chef)
+ - Server Templating tools
+ - Orchestration tools (K8s)
+ - Provisioning tools (meaning, provisioning cloud resources)
+
+Declarative -> Define the end state, the tool calls the API
+Imperative -> Define what you want to happen, in which order
+
+Cloud Specific -> CloudFormation, Azure Resource Manager, Google Cloud Deployment Manager
+Cloud Agnostic -> Terraform, Pulumi
+
+Common patterns:
+ - Terraform for provisioning VMs (or K8s cluster)
+ - Ansible for installing dependencies on the VMs
+ - Packer to prepackage dependencies into VM images for Terraform
+ - K8s to define how the application is deployed and managed on provisioned cloud resources
+
+Architecture:
+
+Terraform State                     _- AWS Provider (plugin) -> AWS
+    |-------------- Terraform Core -
+Terraform Config                    '- Cloudflare Provider (plugin) -> Cloudflare

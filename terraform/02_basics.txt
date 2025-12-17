@@ -1,0 +1,21 @@
+Basic usage sequence
+
+ - terraform init -> Initializes project
+    - Downloads defined provider(s) to working dir
+    - Creates lockfile for dependencies
+    - Downloads configs associated with used modules
+    - Creates state file (JSON file containing info about every resource and data object deployed via TF)
+        - Can contain sensitive info (e.g. DB password)
+        - Can also be stored remotely
+            - Sensitive data encrypted
+            - Collaboration possible
+            - Automation possible
+
+ - terraform plan -> Checks the config against the currently deployed state and prepares the set of commands to achieve the target
+    - Compares Config file (desired state) to State file (actual state)
+    - Collects the API commands to achieve desired state
+
+ - terraform apply -> Takes the set of commands and applies them
+
+ - terraform destroy -> Take down the existing infrastructure
+    - Cleans up the entire project

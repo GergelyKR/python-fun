@@ -31,7 +31,7 @@ Validation:
 
 Sensitive data
 
-To mark variables as sensitive:
+To mark variables as sensitive (it won't print to screen during apply):
  - Sensitive = true
 
 Pass to terraform apply with:
@@ -41,3 +41,8 @@ Pass to terraform apply with:
 Can also use external secret store
  - Example AWS Secrets Manager
 
+.tfvars file -> Define the values for the variables if not default
+                Automatically applied if named terraform.tfvars
+                Otherwise has to be specified at runtime with -var-file parameter
+
+Variables can also be specified at runtime (apply -var="db_user=myuser" -var="db_pass=somethingsecure")

@@ -1,0 +1,43 @@
+Variable Types
+ - Input variables (var.name) -> Reference separate variable files according to needs (example VM flavor)
+ - Local variables (local.name) -> temporary variables similar to ones used within functions
+ - Output variables -> take output of apply and use it in another part of the configuration (example instance IP address)
+
+Order of precedence for setting input variables
+ 6. Manual entry during plan/apply
+ 5. Default value in declaration block
+ 4. TF_VAR_name environment variables
+ 3. terraform.tfvars file
+ 2. *.auto.tfvars file -> auto applied
+ 1. -var or -var-file in CLI
+
+Primitive types:
+ - string
+ - number
+ - bool
+
+Complex types:
+ - list(<TYPE>)
+ - set(<TYPE>)
+ - map(<TYPE>)
+ - object({<ATTR NAME> = <TYPE>, ... })
+ - tuple([<TYPE>, ...])
+
+Validation:
+ - Type checking happens automatically
+ - Custom conditions can also be enforced
+
+- - -
+
+Sensitive data
+
+To mark variables as sensitive:
+ - Sensitive = true
+
+Pass to terraform apply with:
+ - TV_VAR_variable
+ - -var (retrieved from secret manager at runtime)
+
+Can also use external secret store
+ - Example AWS Secrets Manager
+

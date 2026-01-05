@@ -1,0 +1,31 @@
+Modules -> Containers for multiple resources that are used together
+    - Consists of a collection of a .tf and / or .tf.json files together in a directory
+    - The main way to package and reuse resource configurations with Terraform
+
+Types of Modules
+    - Root module: Default module containing all .tf files in main working directory
+    - Child module: A separate external module referred to from a .tf file
+
+Module sources:
+    - Local path
+    - Terraform Registry
+    - GitHub
+    - Bitbucket
+    - Generic Git, Mercurial repos
+    - HTTP URLs
+    - S3 buckets
+    - GCS buckets
+
+Input variables are passed in via module block (e.g. bucket name, domain name, DB credentials)
+Meta-Arguments:
+    - count
+    - for_each
+    - providers
+    - depends_on
+
+Good modules...
+    - Raise abstraction level from base resource Types
+    - Group resources in a logical fashion
+    - Expose input variables for customization + composition
+    - Provide useful defaults
+    - Return outputs to make further integrations possible

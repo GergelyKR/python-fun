@@ -1,0 +1,24 @@
+Managing multiple environments through one config
+    1. Workspaces: Multiple named sections within a single backend
+        - Easy to get started
+        - Convenient terraform.workspace expression
+        - Minimizes code duplication
+        but
+        - Prone to human error
+        - State stored within same backend
+        - Codebase doesn't unambiguously show deployment configurations
+    2. File Structure: Directory layout provides separation, modules provide reuse
+        - Isolation of backends for improved security and less chance of human error
+        - Codebase fully represents deployed State
+        but
+        - Multiple terraform applies required to provision environments
+        - More code duplication, but modules can improve on that
+
+For larger deployments it's useful to
+    - Separate at logical component groups (e.g. compute, network), isolate frequently changing components
+    - Reference resources across configurations with "terrraform_remote_state"
+
+There are also utilities like Terragrunt for simplicity and automation
+    - Keeps TF code DRY
+    - Executes commands across multiple TF configs
+    - Works with multiple cloud accounts

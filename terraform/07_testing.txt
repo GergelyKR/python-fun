@@ -1,0 +1,24 @@
+Why is it needed?
+
+Code Rot -> Code degradation over time
+    - Out of band changes (someone modifies infra via UI)
+    - Unpinned versions (not using a specified version of provider)
+    - Deprecated dependencies (e.g. external modules, cloud resource types)
+    - Unapplied changes
+
+Static checks
+    - Built in
+        - terraform fmt (helps formatting)
+        - terraform validate (checks required input variables,  types, etc.)
+        - terraform plan (compares config to current state)
+        - custom validation rules (e.g. expected length of a variable)
+
+    - External
+        - tflint
+        - checkov, tfsec, terrascan, terraform-compliance, snyk (security scanning)
+        - Terraform Sentinel (enterprise only)
+
+Manual testing -> commands can be automated with bash script
+(Example, apply the config, include a sleep timer and then curl against the new URL)
+
+Automated testing -> Define more complex testing logic with programming languages (example Go & Terratest)

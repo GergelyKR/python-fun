@@ -1,0 +1,40 @@
+Development considerations - - -
+
+General workflow
+    - Write/update Code
+    - Run changes locally (for development environment)
+    - Create pull request
+    - Run tests via CI
+    - Deploy to staging via CD (on merge to main)
+    - Deploy to production via CD (on release)
+
+Using multi-account / project setup
+    - Simplify IAM policies for enforcing controls for different environments (and remote TF backends)
+    - Isolate environments for protection and to minimize blast radius
+    - Reduce resource naming conflicts
+    - Some extra complexity to TF config but its warranted and there's tooling for assistance
+
+Additional tools
+    - Terragrunt
+        - Minimizes code repetition
+        - Enables multi-account separation (improved isolation / security)
+    - Cloud Nuke
+        - Easy cleanup of cloud resources
+    - Makefiles
+        - Prevent human error
+
+CI/CD tools
+    - GitHub Actions
+    - CircleCI
+    - GitLab
+    - Atlantis
+
+Things to look out for:
+    - Name changes when refactoring (might destroy resources that we intented to keep)
+    - Sensitive data in TF state files (should be kept securely and encrypted)
+    - Cloud timeouts (some resources take longer to create, TF application might time out)
+    - Forgetting to destroy test-infra (incurs unwanted bills)
+    - Uni-directional version upgrades (TF state file won't accept applications from older version)
+    - Multiple ways to accomplish same configuration
+    - Some params are immutable (resource has to be recreated to change)
+    - Out of band changes (Changes made via Cloud UI will be destroyed by next TF apply)

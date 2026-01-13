@@ -1,0 +1,26 @@
+GitHub Event -> Triggers a workflow (e.g. pushing to a branch, creating a pull request)
+
+Workflow (pipelines) -> Consists of one or more jobs (with one or more steps ordered in a specific manner)
+
+Between steps -> same computing env
+Across jobs -> different computing env (need to pass data, share env variables or state, etc.)
+
+Steps can be
+ - inline/local ("run")
+ - actions ("uses")
+---
+ - A non-default shell can also be specified
+
+Workflows form a Directe Acyclic Graph (DAG)
+ - "needs" (dependencies) specify the structure
+
+Almost any GH event can trigger a workflow:
+ - Manual (workflow_dispatch)
+ - Push to branch
+ - Create/update Pull request
+ - Cron Schedule
+ - ...
+
+Triggers to events can be filtered based on specific characteristics:
+ - Branch names
+ - Paths/files changes

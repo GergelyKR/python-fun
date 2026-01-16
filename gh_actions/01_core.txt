@@ -24,3 +24,33 @@ Almost any GH event can trigger a workflow:
 Triggers to events can be filtered based on specific characteristics:
  - Branch names
  - Paths/files changes
+
+- - -
+Environment variables
+ - They can be scoped
+    - Workflow
+    - Job
+    - Step
+
+ - Variables can be passed using:
+   - Step & job inputs/outputs
+   - Environment variables
+
+ - Variables and secrets can be stored in
+   - GitHub Organization (Enterprise only)
+   - Repository
+   - Environment (e.g. staging/production)
+
+ - Contexts -> can be accessed at runtime with ${{ ... }}
+   - needs -> outputs & results from dependent jobs
+   - steps -> prior steps' outputs, outcome/conclusion
+   - secrets -> secret values incl. GITHUB_TOKEN
+   - vars -> repo/org/environment-level config variables (great for cross-workflow settings)
+   - - - -
+   - github -> run & event metadata (repo, ref, sha, event_name, etc.)
+   - env -> variables set at workflow/job/step scope (override rules: step > job > workflow)
+   - matrix -> current matrix values (e.g. os, node)
+   - strategy -> matrix strategy info (job-index, job-total, fail-fast, max-parallel)
+   - job -> current job status; container/service info
+   - runner -> runner OS/arch/temp/tool_cache
+   - inputs -> parameters to reusable/workflow_dispach workflows
